@@ -1,0 +1,55 @@
+package com.zj.screenrecorder.recorder;
+
+import static android.media.MediaFormat.MIMETYPE_AUDIO_AAC;
+import static android.media.MediaFormat.MIMETYPE_VIDEO_AVC;
+
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import android.view.Surface;
+
+import com.zj.screenrecorder.VideoEncodeConfig;
+
+import java.util.Objects;
+
+/**
+ * @author Zjj
+ * @version 2022/4/13
+ */
+class VideoEncoder extends BaseEncoder {
+
+    private static final boolean VERBOSE = false;
+    private final VideoEncodeConfig mConfig;
+    private Surface mSurface;
+
+
+    VideoEncoder(VideoEncodeConfig config) {
+        super(config.codecName);
+        this.mConfig = config;
+    }
+
+    @Override
+    protected void onEncoderConfigured(MediaCodec encoder) {
+        mSurface = encoder.createInputSurface();
+    }
+
+    @Override
+    protected MediaFormat createMediaFormat() {
+        return mConfig.toFormat();
+    }
+
+    /**
+     * @throws NullPointerException if prepare() not call
+     */
+    Surface getInputSurface() {
+        return Objects.requireNonNull(mSurface, "doesn't prepare()");
+    }
+
+    @Override
+    public void release() {
+        if (mSurface != null) {
+            mSurface.release();
+            mSurface = null;
+        }
+        super.release();
+    }
+}
