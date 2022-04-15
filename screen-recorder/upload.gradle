@@ -1,0 +1,54 @@
+apply plugin: 'maven-publish'
+
+def pom_artifact_id = project.getName()
+
+afterEvaluate {
+    publishing {
+        Properties properties = new Properties()
+        String path = getProjectDir().path + '/cc-upload.properties'
+        File file = new File(path)
+        if (file.exists()) {
+            InputStream inputStream = file.newDataInputStream()
+            properties.load(inputStream)
+        } else {
+            throw new FileNotFoundException("File not found exception \n case: the file path is " + path)
+        }
+        String MAVEN_REPO_SNAPSHOT_URL = properties.getProperty("MAVEN_REPO_SNAPSHOT_URL")
+        String MAVEN_REPO_RELEASE_URL = properties.getProperty("MAVEN_REPO_RELEASE_URL")
+        String GROUP_ID = properties.getProperty("GROUP_ID")
+        String USERNAME = properties.getProperty("USERNAME")
+        String PASSWORD = properties.getProperty("PASSWORD")
+        String VERSION = properties.getProperty("VERSION")
+        String ARTIFACT_ID = properties.getProperty("ARTIFACT_ID")
+        String DESC = properties.getProperty("DESC")
+
+        publications {
+            release(MavenPublication) {
+                groupId = GROUP_ID
+                artifactId = ARTIFACT_ID
+                version = VERSION
+                description = DESC
+                artifact("$buildDir/outputs/aar/${pom_artifact_id}-debug.aar")
+            }
+            snapshot(MavenPublication) {
+                groupId = GROUP_ID
+                artifactId = ARTIFACT_ID + "-SNAPSHOT"
+                version = VERSION
+                description = DESC
+                artifact("$buildDir/outputs/aar/${pom_artifact_id}-debug.aar")
+            }
+        }
+
+        repositories {
+            maven {
+                credentials {
+                    username = USERNAME
+                    password = PASSWORD
+                }
+                url = version.endsWith('SNAPSHOT') ? MAVEN_REPO_SNAPSHOT_URL : MAVEN_REPO_RELEASE_URL
+            }
+        }
+    }
+}
+
+//authentication(userName: USERNAME, password: PASSWORD)
