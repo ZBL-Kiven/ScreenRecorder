@@ -1,14 +1,14 @@
-package com.zj.screenrecorder
+package com.zj.screenrecorder.configs
 
 import android.content.Context
 import android.content.res.Configuration
 import android.media.MediaCodecInfo
+import android.text.format.DateUtils
 import android.util.Range
-import com.zj.screenrecorder.recorder.RecorderBuilder
 import java.io.File
 import java.math.BigDecimal
 
-abstract class BaseScreenRecorder : RecorderBuilder() {
+abstract class BaseScreenRecorderBuilder : RecorderBuilder() {
 
     override fun getOutputPath(context: Context): String {
         return File(context.cacheDir, "/screen-shot").path
@@ -60,5 +60,17 @@ abstract class BaseScreenRecorder : RecorderBuilder() {
 
     override fun getAudioCodec(codecInfo: Array<MediaCodecInfo>?): String? {
         return codecInfo?.get(0)?.name
+    }
+
+    override fun getNotifyStringRecordFlushHint(): String {
+        return "end record"
+    }
+
+    override fun getNotifyStringRecordingHint(): String {
+        return "recording..."
+    }
+
+    override fun getNotifyStringRecordingTime(time: Long): String {
+        return "length: ${DateUtils.formatElapsedTime(time / 1000)}"
     }
 }

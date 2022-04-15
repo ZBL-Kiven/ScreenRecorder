@@ -4,6 +4,7 @@
     package="com.zj.screenrecorder">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -14,9 +15,15 @@
     <application>
 
         <activity
-            android:name=".recorder.RecorderService"
+            android:name=".recorder.RecorderAct"
             android:exported="false"
             android:theme="@style/RecorderServiceStyle" />
+
+        <service
+            android:name=".recorder.Recorder"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
     </application>
 
 </manifest>

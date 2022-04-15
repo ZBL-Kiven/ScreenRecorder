@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="length_video">已录制时长:</string>
-    <string name="recording">正在录制屏幕…</string>
-    <string name="stop">停止并储存至相册</string>
-</resources>

@@ -1,9 +1,8 @@
-package com.zj.screenrecorder
+package com.zj.screenrecorder.configs
 
 import android.media.MediaCodecInfo
 import android.media.MediaCodecInfo.AudioCapabilities
 import android.media.MediaFormat
-import com.zj.screenrecorder.recorder.RecorderBuilder
 import com.zj.screenrecorder.recorder.Utils
 import com.zj.screenrecorder.recorder.Utils.AUDIO_AAC
 import java.util.*

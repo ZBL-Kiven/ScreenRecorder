@@ -26,7 +26,7 @@ import static android.media.MediaCodec.BUFFER_FLAG_KEY_FRAME;
 import static android.media.MediaCodec.INFO_OUTPUT_FORMAT_CHANGED;
 import static android.os.Build.VERSION_CODES.N;
 
-import com.zj.screenrecorder.AudioEncodeConfig;
+import com.zj.screenrecorder.configs.AudioEncodeConfig;
 
 /**
  * @author Zjj

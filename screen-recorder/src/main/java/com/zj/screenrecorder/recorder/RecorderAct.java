@@ -20,7 +20,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecorderService extends Activity {
+public class RecorderAct extends Activity {
 
     private static final String TAG = "RecorderService";
     private static final int REQUEST_MEDIA_PROJECTION = 1;
@@ -31,7 +31,7 @@ public class RecorderService extends Activity {
     private Intent resultIntent;
 
     static void start(Context context, boolean micRecordEnabled, Intent captureIntent) {
-        Intent intent = new Intent(context, RecorderService.class);
+        Intent intent = new Intent(context, RecorderAct.class);
         intent.putExtra("micRecordEnabled", micRecordEnabled);
         intent.putExtra("captureIntent", captureIntent);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -106,7 +106,7 @@ public class RecorderService extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_MEDIA_PROJECTION) {
             resultIntent = new Intent();
-            resultIntent.setAction(RecorderBuilder.REQUEST_MEDIA_PROJECTION_ID);
+            resultIntent.setAction(Recorder.REQUEST_MEDIA_PROJECTION_ID);
             resultIntent.putExtra("resultCode", resultCode);
             resultIntent.putExtra("captureIntent", data);
             finish();

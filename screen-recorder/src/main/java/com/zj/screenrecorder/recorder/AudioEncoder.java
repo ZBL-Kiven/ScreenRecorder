@@ -2,7 +2,7 @@ package com.zj.screenrecorder.recorder;
 
 import android.media.MediaFormat;
 
-import com.zj.screenrecorder.AudioEncodeConfig;
+import com.zj.screenrecorder.configs.AudioEncodeConfig;
 
 /**
  * @author Zjj

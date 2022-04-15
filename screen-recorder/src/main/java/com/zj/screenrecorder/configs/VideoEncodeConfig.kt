@@ -1,4 +1,4 @@
-package com.zj.screenrecorder
+package com.zj.screenrecorder.configs
 
 import android.content.res.Configuration
 import android.media.MediaCodecInfo
@@ -7,7 +7,6 @@ import android.media.MediaCodecInfo.VideoCapabilities
 import android.media.MediaFormat
 import android.os.Build
 import android.os.Build.VERSION_CODES.M
-import com.zj.screenrecorder.recorder.RecorderBuilder
 import com.zj.screenrecorder.recorder.Utils
 import com.zj.screenrecorder.recorder.Utils.VIDEO_AVC
 import java.util.*

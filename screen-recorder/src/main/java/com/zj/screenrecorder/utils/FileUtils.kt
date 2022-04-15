@@ -76,7 +76,6 @@ object FileUtils {
                     fos.close()
                     fis.close()
                 }
-                Log.e("------- ", "${file.length()}       ${context.contentResolver.openInputStream(uri)?.available()}")
             }
             val uriPath = getRealPathFromUri(context, uri)
             notifyWithScanner(context, uriPath, mimeType) { b ->

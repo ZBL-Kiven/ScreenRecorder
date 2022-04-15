@@ -1,13 +1,10 @@
 package com.zj.screenrecorder.recorder;
 
-import static android.media.MediaFormat.MIMETYPE_AUDIO_AAC;
-import static android.media.MediaFormat.MIMETYPE_VIDEO_AVC;
-
 import android.media.MediaCodec;
 import android.media.MediaFormat;
 import android.view.Surface;
 
-import com.zj.screenrecorder.VideoEncodeConfig;
+import com.zj.screenrecorder.configs.VideoEncodeConfig;
 
 import java.util.Objects;
 

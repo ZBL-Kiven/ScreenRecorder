@@ -2,17 +2,18 @@ package com.zj.screentest
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.zj.screenrecorder.BaseScreenRecorder
+import com.zj.screenrecorder.ScreenRecorder
+import com.zj.screenrecorder.configs.BaseScreenRecorderBuilder
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
     var starBtn: TextView? = null
-    private val recorder = object : BaseScreenRecorder() {
+
+    private val recordBuilder = object : BaseScreenRecorderBuilder() {
         override suspend fun onStartingRecord() {
             starBtn?.text = "stop record"
         }
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         starBtn = findViewById(R.id.record_button)
         starBtn?.setOnClickListener { v: View ->
             v.isSelected = !v.isSelected
-            if (v.isSelected) recorder.startRecord(this) else recorder.stopRecord()
+            if (v.isSelected) ScreenRecorder.startRecord(this, recordBuilder) else ScreenRecorder.stopRecord()
         }
     }
 }
