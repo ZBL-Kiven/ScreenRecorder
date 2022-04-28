@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicBoolean;
+
 import com.zj.screenrecorder.configs.AudioEncodeConfig;
 import com.zj.screenrecorder.configs.VideoEncodeConfig;
 
@@ -80,10 +81,6 @@ class ScreenRecorder {
 
     public void setCallback(Callback callback) {
         mCallback = callback;
-    }
-
-    public String getSavedPath() {
-        return mDstPath;
     }
 
     interface Callback {

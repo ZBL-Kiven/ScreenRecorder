@@ -20,6 +20,9 @@ abstract class RecorderBuilder {
     abstract suspend fun onStartingRecord()
     abstract suspend fun onCompletedRecord(file: File?): Boolean
     abstract suspend fun onStopRecord(isCompleted: Boolean?)
+    open fun onError(e: Throwable?) {
+
+    }
 
     @ScreenOrientation
     abstract fun getScreenOrientation(): Int

@@ -166,6 +166,7 @@ internal class Recorder : Service() {
                     Log.e(TAG, "onStop: Recorder error ! See logcat for more details")
                     error.printStackTrace()
                     if (output.delete()) Log.e(TAG, "onStop: the error file has been deleted")
+                    builder.onError(error)
                 }
             }
 
