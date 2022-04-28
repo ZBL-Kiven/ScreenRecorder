@@ -5,7 +5,7 @@ def pom_artifact_id = project.getName()
 afterEvaluate {
     publishing {
         Properties properties = new Properties()
-        String path = getProjectDir().path + '/upload.properties'
+        String path = getProjectDir().path + '/cc-upload.properties'
         File file = new File(path)
         if (file.exists()) {
             InputStream inputStream = file.newDataInputStream()

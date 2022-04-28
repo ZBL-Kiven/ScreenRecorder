@@ -109,7 +109,7 @@ abstract class BaseEncoder implements Encoder {
                 return MediaCodec.createByCodecName(mCodecName);
             }
         } catch (IOException e) {
-            Log.w("@@", "Create MediaCodec by name '" + mCodecName + "' failure!", e);
+            Log.w("BaseRecorder", "Create MediaCodec by name '" + mCodecName + "' failure!", e);
         }
         return MediaCodec.createEncoderByType(type);
     }

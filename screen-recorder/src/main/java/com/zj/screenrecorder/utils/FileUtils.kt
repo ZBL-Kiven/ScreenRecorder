@@ -48,6 +48,7 @@ object FileUtils {
         val mimeType = URLConnection.getFileNameMap().getContentTypeFor(file.name) ?: contentTypeBackWard
         if (!file.exists() || file.isDirectory) {
             it.resume(false)
+            return@suspendCancellableCoroutine
         }
         val resolver = context?.contentResolver
         val values = ContentValues()

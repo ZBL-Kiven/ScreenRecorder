@@ -14,7 +14,6 @@ import java.util.Objects;
  */
 class VideoEncoder extends BaseEncoder {
 
-    private static final boolean VERBOSE = false;
     private final VideoEncodeConfig mConfig;
     private Surface mSurface;
 
