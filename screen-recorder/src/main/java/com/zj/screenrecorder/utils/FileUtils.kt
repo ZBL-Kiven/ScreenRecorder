@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Environment
 import android.os.FileUtils
 import android.provider.MediaStore
-import android.util.Log
 import kotlinx.coroutines.*
 import java.io.File
 import java.net.URLConnection
